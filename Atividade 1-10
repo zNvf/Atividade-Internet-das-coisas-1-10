@@ -1,0 +1,174 @@
+Atividade-1
+1: #include <stdio.h>
+ 2: 
+3: int main() {
+4:     
+printf("Hello, World!\n");
+5: }
+============================
+Atividade-2
+1: #include <stdio.h>
+ 2: 
+3: int main() {
+ 4:     
+int num1, num2, soma;
+ 5: 
+6:     
+7:     
+8:     
+9:     
+10:     
+11:     
+12:     
+13: }
+ printf("Digite o primeiro número: ");
+ scanf("%d", &num1);
+ printf("Digite o segundo número: ");
+ scanf("%d", &num2);
+ soma = num1 + num2;
+ printf("A soma de %d e %d é %d.\n", num1, num2, soma);
+ return 0
+==============================
+1: #include <stdio.h>
+ 2: 
+3: int main() {
+ 4:     
+int numero;
+ 5: 
+6:     
+7:     
+8: 
+9:     
+10:         
+11:     
+12:         
+13:     
+14:     
+15: }
+ printf("Digite um número: ");
+ scanf("%d", &numero);
+ if (numero % 2 == 0) {
+ printf("O número %d é par.\n", numero);
+ } else {
+ printf("O número %d é ímpar.\n", numero);
+ }
+ return 0
+}
+================================
+Atividade-4
+1: #include <stdio.h>
+2:
+3: int main() {
+4: int num1, num2;
+5:
+6: printf("Digite o primeiro número: ");
+7: scanf("%d", &num1);
+8:
+9: printf("Digite o segundo número: ");
+10: scanf("%d", &num2);
+11:
+12: if (num1 > num2) {
+13: printf("O maior número é %d.\n", num1);
+14: } else if (num2 > num1) {
+15: printf("O maior número é %d.\n", num2);
+16: } else {
+17: printf("Os dois números são iguais.\n");
+18: }
+19:
+20: return 0;
+21: }
+=================================
+Atividade-5
+1: #include <stdio.h>
+2: #include <math.h>
+3:
+4: int main() {
+5: float raio, area;
+6:
+7: printf("Digite o raio do círculo: ");
+8: scanf("%f", &raio);
+9:
+10: area = M_PI * raio * raio;
+11:
+12: printf("A área do círculo com raio %.2f é %.2f.\n", raio, area);
+13:
+14: return 0;
+15: }
+=================================
+Atividade-6
+1: #include <stdio.h>
+ 2: 
+3: int main() {
+ 4:     
+float num1, num2, num3, media;
+ printf("Digite o primeiro número: ");
+ scanf("%f", &num1);
+ printf("Digite o segundo número: ");
+ scanf("%f", &num2);
+ printf("Digite o terceiro número: ");
+ scanf("%f", &num3);
+ media = (num1 + num2 + num3) / 3;
+ printf("A média aritmética dos números %.2f, %.2f e %.2f é %.2f.\n", num1, num2, num3, 
+return 0
+=================================
+Atividade-7
+1: #include <stdio.h>
+2:
+3: int main() {
+4: float celsius, fahrenheit;
+5:
+6: printf("Digite a temperatura em Celsius: ");
+7: scanf("%f", &celsius);
+8:
+9: fahrenheit = (celsius * 9 / 5) + 32;
+10:
+11: printf("A temperatura em Fahrenheit é %.2f.\n", fahrenheit);
+12:
+13: return 0;
+14: }
+=================================
+Atividade-8
+1: #include <stdio.h>
+2:
+3: int main() {
+4: int numero;
+5:
+6: printf("Digite um número para exibir a tabuada: ");
+7: scanf("%d", &numero);
+8:
+9: printf("Tabuada do número %d:\n", numero);
+10: for (int i = 1; i <= 10; i++) {
+11: printf("%d x %d = %d\n", numero, i, numero * i);
+12: }
+13:
+14: return 0;
+15: }
+===============================
+Atividade-9
+1: #include<stdio.h>
+2:
+3: int main()
+4: {
+5: int fat, n;
+6: printf("Insira um valor para o qual deseja calcular seu fatorial: ");
+7: scanf("%d", &n);
+8:
+9: for(fat = 1; n > 1; n = n - 1){
+10:
+11: fat = fat * n;}
+12:
+13: printf("\nFatorial calculado: %d", fat);
+14: return 0;
+15: }
+===============================
+Atividade-10
+1: #include <stdio.h>
+2:
+3: int main() {
+4: int contador, numero = 10;
+5: printf("A contagem regressiva: ");
+6: for (contador = 0; contador < numero; numero = numero - 1) {
+7: printf("%d ", numero);
+8: }
+9: return 0;
+10: }
