@@ -1,0 +1,698 @@
+//Atividade 11
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+	int main() {
+		
+		setlocale(LC_ALL, "Portuguese");
+		
+		int numero, contador;
+		
+		printf ("Digite um número: ");
+		scanf("%d", &numero);
+		
+		if ( numero <= 1){
+			printf("Não é primo");
+		
+		}else {
+			for (contador = 2; contador < numero; contador++){
+				if (numero % contador==0){
+				printf("Não é primo");
+				break;
+				}
+			}
+			if (contador==numero) {
+				printf("É primo");
+			}
+		}
+	}
+=================================================================================
+//Atividade 12
+1: #include <stdio.h>
+2:
+3: int somaNaturais(int n) {
+4: return n * (n + 1) / 2;
+5: }
+6:
+7: int main() {
+8: int n;
+9:
+10: printf("Digite o valor de N: ");
+11: scanf("%d", &n);
+12:
+13: if (n < 0) {
+14: printf("O valor de N deve ser um número natural (não negativo).\n");
+15: return 1;
+16: }
+17:
+18: printf("A soma dos primeiros %d números naturais é %d.\n", n, somaNaturais(n));
+19:
+20: return 0;
+21: }
+
+=================================================================================
+//Atividade 13
+1: #include <stdio.h>
+2:
+3: void fibonacci(int n) {
+4:
+5: int a = 0, b = 1, temp;
+6:
+7: if (n <= 0) {
+8: printf("O número de termos deve ser positivo.\n");
+9: return;
+10: }
+11:
+12: printf("Sequência de Fibonacci:\n");
+13:
+14: for (int i = 0; i < n; i++) {
+15: printf("%d ", a);
+16: temp = a;
+17: a = b;
+18: b = temp + b;
+19: }
+20: printf("\n");
+21: }
+22:
+23: int main() {
+24: int n;
+25:
+26: printf("Digite o número de termos da sequência de Fibonacci: ");
+27: scanf("%d", &n);
+28:
+29: fibonacci(n);
+30:
+31: return 0;
+32: }
+=================================================================================
+//Atividade 14
+1: #include <stdio.h>
+2:
+3: int inverterNumero(int num) {
+4: int invertido = 0;
+5: while (num != 0) {
+6: int digito = num % 10;
+7: invertido = invertido * 10 + digito;
+8: num /= 10;
+9: }
+10: return invertido;
+11: }
+12:
+13: int main() {
+14: int num;
+15:
+16: printf("Digite um número: ");
+17: scanf("%d", &num);
+18:
+19: printf("Número invertido: %d\n", inverterNumero(num));
+20:
+21: return 0;
+22: }
+=================================================================================
+//Atividade 15
+1: #include <stdio.h>
+2:
+3: int potencia(int base, int expoente) {
+4: int resultado = 1;
+5: for (int i = 0; i < expoente; i++) {
+6: resultado *= base;
+7: }
+8: return resultado;
+9: }
+10:
+11: int main() {
+12: int base, expoente;
+13:
+14: printf("Digite a base: ");
+15: scanf("%d", &base);
+16: printf("Digite o expoente: ");
+17: scanf("%d", &expoente);
+18:
+19: if (expoente < 0) {
+20: printf("O expoente não pode ser negativo.\n");
+21: return 1;
+22: }
+23:
+24: printf("%d elevado a %d é %d\n", base, expoente, potencia(base, expoente));
+25:
+26: return 0;
+27: }
+=================================================================================
+//Atividade 16
+1: #include <stdio.h>
+2: #include <string.h>
+3: #include <ctype.h>
+4: #include <stdbool.h>
+5:
+6: bool isPalindromo(char str[]) {
+7: int inicio = 0;
+8: int fim = strlen(str) - 1;
+9:
+10: while (inicio < fim) {
+11:
+12: while (inicio < fim && !isalnum(str[inicio])) inicio++;
+13: while (inicio < fim && !isalnum(str[fim])) fim--;
+14:
+15: if (tolower(str[inicio]) != tolower(str[fim])) {
+16: return false;
+17: }
+18:
+19: inicio++;
+20: fim--;
+21: }
+22:
+23: return true;
+24: }
+25:
+26: int main() {
+27: char str[100];
+28:
+29: printf("Digite uma palavra ou frase: ");
+30: fgets(str, sizeof(str), stdin);
+31:
+32: size_t len = strlen(str);
+33: if (len > 0 && str[len - 1] == '\n') {
+34: str[len - 1] = '\0';
+35: }
+36:
+37: if (isPalindromo(str)) {
+38: printf("\"%s\" é um palíndromo.\n", str);
+39: } else {
+40: printf("\"%s\" não é um palíndromo.\n", str);
+41: }
+42:
+43: return 0;
+44: }
+=================================================================================
+//Atividade 17
+1: #include <stdio.h>
+2:
+3: int mdc(int a, int b) {
+4: while (b != 0) {
+5: int temp = b;
+6: b = a % b;
+7: a = temp;
+8: }
+9: return a;
+10: }
+11:
+12: int main() {
+13: int a, b;
+14:
+15: printf("Digite o primeiro número: ");
+16: scanf("%d", &a);
+17: printf("Digite o segundo número: ");
+18: scanf("%d", &b);
+19:
+20: printf("O MDC de %d e %d é %d.\n", a, b, mdc(a, b));
+21:
+22: return 0;
+23: }
+=================================================================================
+Atividade 18
+1: #include <stdio.h>
+2:
+3: int mdc(int a, int b) {
+4: while (b != 0) {
+5: int temp = b;
+6: b = a % b;
+7: a = temp;
+8: }
+9: return a;
+10: }
+11:
+12: int mmc(int a, int b) {
+13: return (a * b) / mdc(a, b);
+14: }
+15:
+16: int main() {
+17: int a, b;
+18:
+19: printf("Digite o primeiro número: ");
+20: scanf("%d", &a);
+21: printf("Digite o segundo número: ");
+22: scanf("%d", &b);
+23:
+24: printf("O MMC de %d e %d é %d.\n", a, b, mmc(a, b));
+25:
+26: return 0;
+27: }
+=================================================================================
+Atividade 19
+1: #include <stdio.h>
+2:
+3: int ehNumeroPerfeito(int num) {
+4: if (num <= 0) return 0;
+5:
+6: int soma = 0;
+7:
+8: for (int i = 1; i <= num / 2; i++) {
+9: if (num % i == 0) {
+10: soma += i;
+11: }
+12: }
+13:
+14: return soma == num;
+15: }
+16:
+17: int main() {
+18: int num;
+19:
+20: printf("Digite um número: ");
+21: scanf("%d", &num);
+22:
+23: if (ehNumeroPerfeito(num)) {
+24: printf("%d é um número perfeito.\n", num);
+25: } else {
+26: printf("%d não é um número perfeito.\n", num);
+27: }
+28:
+29: return 0;
+30: }
+=================================================================================
+Atividade 20
+1: #include <stdio.h>
+2:
+3: void selectionSort(int arr[], int n) {
+4: int i, j, min_idx, temp;
+5:
+6: for (i = 0; i < n - 1; i++) {
+7:
+8: min_idx = i;
+9: for (j = i + 1; j < n; j++) {
+10: if (arr[j] < arr[min_idx]) {
+11: min_idx = j;
+12: }
+13: }
+14:
+15: if (min_idx != i) {
+16: temp = arr[i];
+17: arr[i] = arr[min_idx];
+18: arr[min_idx] = temp;
+19: }
+20: }
+21: }
+22:
+23: int main() {
+24: int n;
+25:
+26: printf("Digite o número de elementos no vetor: ");
+27: scanf("%d", &n);
+28:
+29: int arr[n];
+30:
+31: printf("Digite os %d elementos do vetor:\n", n);
+32: for (int i = 0; i < n; i++) {
+33: scanf("%d", &arr[i]);
+34: }
+35:
+36: selectionSort(arr, n);
+37:
+38: printf("Vetor ordenado em ordem crescente:\n");
+39: for (int i = 0; i < n; i++) {
+40: printf("%d ", arr[i]);
+41: }
+42: printf("\n");
+43:
+44: return 0;
+45: }
+=================================================================================
+//Atividade 20
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+	int main() {
+		
+		setlocale(LC_ALL, "Portuguese");
+			
+			int quant, i, j, temporario;					
+			printf ("Informe o tamnaho do vetor: ");
+			scanf("%i", &quant);
+		
+			int  numeros[quant];
+			printf("\n");
+			
+			for (i = 0; i < quant; i++) {
+				printf("Informe os números do vetor: ");
+				scanf("%i", &numeros[i]);	}
+				
+				for(i=0; i < quant-1; i++){
+					for (j = (i+1); j < quant; j++) {
+				 	if (numeros[i] > numeros[j]){
+				 		temporario = numeros[i];
+				 		numeros[i] = numeros[j];
+				 		numeros[j] = temporario;			 		
+					 }				 
+				 }
+				}				
+				 
+	
+		for (i = 0; i < quant; i++) {
+		printf("%i ", numeros[i]);
+	}
+	return 0;
+}
+=================================================================================
+//Atividade 21
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+		int main() {
+				setlocale(LC_ALL, "Portuguese");
+			
+			int numero, quantidade, i, chave, encontrado = -1;
+			
+			printf("Qual a quantidade do vetor: ");
+			scanf("%d", &quantidade);	
+			
+			printf("\n");
+			
+			printf("Digite os números do vetor: ");
+			int vetor[quantidade];
+			for (i = 0; i < quantidade; i++){
+				scanf("%i", &vetor[i]);
+				
+			}
+			
+			printf("\n Qual número deseja encotrar: ");
+			scanf("%d", &chave);
+			for (i = 0; i < quantidade; i++){
+			if (vetor[i] == chave) {
+			encontrado = i;
+		}	}
+			
+			if (encontrado != -1)
+				printf("\nO vetor possui esse número");
+			else 
+				printf("\nO vetor não possui esse número");
+			
+			return 0;}
+  =================================================================================
+//Atividade 22
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+		int main() {
+				setlocale(LC_ALL, "Portuguese");
+				
+				int vetor[]= {31, 2, 43, 40, 12, 20, 50};
+				int chave, resultado = -1, i, contador;
+				
+			for (contador = 0; contador < 7; contador++){
+				printf("%i ", vetor[contador]);
+			}
+			printf("\n Qual número deseja encotrar: ");
+			scanf("%d", &chave);
+			for (i = 0; i < chave; i++){
+			if (vetor[i] == chave) {
+			resultado = i;
+		}	}
+			
+			if (resultado != -1)
+				printf("\nO vetor possui esse número na posição %d", resultado);
+			else 
+				printf("\nO vetor não possui esse número");
+			
+			return 0;}
+
+=================================================================================
+//Atividade 23
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include<time.h>
+
+		int main() {
+				setlocale(LC_ALL, "Portuguese");
+				
+				int i, number, random;
+				
+				srand(time(NULL));
+				
+				random = rand() %100;
+				
+				printf("JOGO DA ADIVINHAÇÃO\n Escolha um numero de 0 a 100: ");
+				
+				while (number != random){
+					scanf("%d", &number);
+					if (number < random){
+						printf("Muito baixo\n");
+					}
+					if (number > random){
+						printf("Muito alto\n");
+					}
+					if (number == random){
+						printf("Você acertou");
+					}
+				}	  
+}
+=================================================================================
+//Atividade 24
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
+
+int main() {
+	setlocale(LC_ALL, "Portuguese");
+	
+	long int binario, numero;
+	
+	int decimal = 0, base = 1, resto;
+	
+	printf("Insira o numero em binario: ");
+	scanf("%ld", &numero);
+	
+	binario = numero;
+	
+	while (numero > 0) {
+		resto = numero % 10;
+		decimal = decimal + resto * base;
+		numero = numero / 10;
+		base = base * 2;;
+	}
+	
+	printf("\n%ld em decimal é %i",binario, decimal);
+	return 0;
+}
+=================================================================================
+//Atividade 25
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+#include <time.h>
+
+
+
+void binario(int decimal){
+	if (decimal == 0) {
+		printf("%d", decimal);
+	} else {
+		binario(decimal / 2);
+		printf("%d", decimal % 2);
+	}
+	
+}
+int main() {
+	setlocale(LC_ALL, "Portuguese");
+	
+	int decimal;
+	
+	printf("Informe um número: ");
+	scanf("%d", &decimal);
+	
+	binario(decimal);
+}
+=================================================================================
+//Atividade 26
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+
+	int main() {
+		setlocale(LC_ALL, "Portuguese");
+		
+		int matriz1[2][2] = {2,3,6,9}, matriz2[2][2] = {7,4,1,5}, mat3[2][2];
+		int i, j;
+		
+		for(i = 0; i < 2; i++){
+			for(j = 0; j < 2; j++)
+				printf(" %2d ", matriz1[i][j]);
+				printf("\n");
+      
+	} printf("    +\n");	
+    
+		for(i = 0; i < 2; i++){
+			for(j = 0; j < 2; j++)
+				printf(" %2d ", matriz2[i][j]);
+				printf("\n");										
+} printf("    =\n");
+		
+		for (i = 0; i < 2; i++){
+			for (j = 0; j < 2; j++){
+				mat3[i][j] = matriz1[i][j] + matriz2[i][j];
+			}		
+		}
+			
+		for(i = 0; i < 2; i++){
+			for(j = 0; j < 2; j++)
+				printf(" %2d ", mat3[i][j]);
+				printf("\n");				
+		}
+	
+	return 0;	
+	}
+ =================================================================================
+//Atividade 27
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+
+	int main() {
+		setlocale(LC_ALL, "Portuguese");
+		
+		int matriz1[2][2], matriz2[2][2], mat3[2][2];
+		int linha, coluna;
+		
+		for (linha = 0; linha < 2; linha++){
+			for (coluna = 0; coluna < 2; coluna++){
+				printf("Primeira Matriz: Digite o valor da linha [%d] e da coluna [%d]:", linha, coluna);			
+				scanf("%d", &matriz1[linha][coluna]);
+		}		
+	}	printf("\n PRIMEIRA MATRIZ\n ");
+			for (linha = 0; linha < 2; linha++){
+			for (coluna = 0; coluna < 2; coluna++){
+				printf(" %2d", matriz1[linha][coluna]);	
+			}printf("\n");
+		}
+		
+	 printf("\n");
+		for (linha = 0; linha < 2; linha++){
+			for (coluna = 0; coluna < 2; coluna++){
+				printf("Segunda Matriz: Digite o valor da linha [%d] e da coluna [%d]: ", linha, coluna);	
+				scanf("%d", &matriz2[linha][coluna]);		
+		}
+	}
+			printf("\n SEGUNDA MATRIZ\n ");
+			for (linha = 0; linha < 2; linha++){
+			for (coluna = 0; coluna < 2; coluna++){
+				printf(" %2d", matriz2[linha][coluna]);	
+			}printf("\n");
+		}
+			printf("\n RESULTADO DA MULTIPLICAÇÃO\n");
+			for (linha = 0; linha < 2; linha++){
+			for (coluna = 0; coluna < 2; coluna++){
+				mat3 [linha][coluna] = matriz1[linha][coluna] * matriz2[linha][coluna];
+				printf ("linha[%d] coluna[%d] = %d\n", linha, coluna, mat3[linha][coluna]); 
+			
+				}
+			
+			}	
+	return 0;	
+	}
+=================================================================================
+//Atividade 28
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+
+	int main() {
+		setlocale(LC_ALL, "Portuguese");
+				
+		int matriz1[2][2], determinante, ad, bc, a, b, c, d;
+		int linha, coluna;
+		
+			for (linha = 0; linha < 2; linha++){
+				for (coluna = 0; coluna < 2; coluna++){
+				printf("Matriz: Digite o valor da linha [%d] e da coluna [%d]:", linha, coluna);			
+				scanf("%d", &matriz1[linha][coluna]);
+		}		
+	}
+			for (linha = 1; linha < 2; linha++){
+				for (coluna = 1; coluna < 2; coluna++){
+					d = matriz1[linha][coluna];
+			}
+	}printf("\n");
+			for (linha = 0; linha < 1; linha++){
+				for (coluna = 0; coluna < 1; coluna++){
+					a = matriz1[linha][coluna];
+			}
+	}printf("\n");
+			for (linha = 1; linha < 2; linha++){
+				for (coluna = 0; coluna < 1; coluna++){
+					c = matriz1[linha][coluna];
+			}
+	}printf("\n");
+			for (linha = 0; linha < 1; linha++){
+				for (coluna = 1; coluna < 2; coluna++){
+					b = matriz1[linha][coluna];
+			}
+	}printf("\n");
+		
+		ad = a * d;
+		bc = b * c;
+		determinante = ad - bc;
+		
+		printf("O determinante é %d", determinante);
+		
+	return 0;
+}
+=================================================================================
+//Atividade 29
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+#include <string.h>
+
+	int main() {
+		setlocale(LC_ALL, "Portuguese");
+	
+		char palavra[30];
+		int quant, vogais = 0, i;
+		
+		printf("Digite uma palavra: ");
+		scanf("%s", &palavra);
+		
+		quant= strlen(palavra);
+		
+		for(i = 0; i <=quant; i++){
+			switch(palavra[i]){
+				case 'A':
+				case 'a':
+				case 'E':
+				case 'e':
+				case 'I':
+				case 'i':
+				case 'O':
+				case 'o':
+				case 'U':
+				case 'u':
+					vogais++;
+						break;
+			}
+	}	
+		printf("A quantidade de vogais na palavra é de %d", vogais);
+			
+	return 0;	
+	}
+ =================================================================================
+//Atividade 30
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+
+int main() {
+setlocale(LC_ALL, "Portuguese");
+			
+char palavra[30];
+		
+printf("Digite um número: ");
+scanf("%s", &palavra);
+		
+int x = atoi(palavra);
+		
+printf("%d", x);
+}
