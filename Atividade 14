@@ -1,0 +1,23 @@
+//Atividade 14
+1: #include <stdio.h>
+2:
+3: int inverterNumero(int num) {
+4: int invertido = 0;
+5: while (num != 0) {
+6: int digito = num % 10;
+7: invertido = invertido * 10 + digito;
+8: num /= 10;
+9: }
+10: return invertido;
+11: }
+12:
+13: int main() {
+14: int num;
+15:
+16: printf("Digite um número: ");
+17: scanf("%d", &num);
+18:
+19: printf("Número invertido: %d\n", inverterNumero(num));
+20:
+21: return 0;
+22: }
