@@ -1,0 +1,16 @@
+Atividade-9
+1: #include<stdio.h>
+2:
+3: int main()
+4: {
+5: int fat, n;
+6: printf("Insira um valor para o qual deseja calcular seu fatorial: ");
+7: scanf("%d", &n);
+8:
+9: for(fat = 1; n > 1; n = n - 1){
+10:
+11: fat = fat * n;}
+12:
+13: printf("\nFatorial calculado: %d", fat);
+14: return 0;
+15: }
