@@ -1,0 +1,22 @@
+//Atividade 12
+1: #include <stdio.h>
+2:
+3: int somaNaturais(int n) {
+4: return n * (n + 1) / 2;
+5: }
+6:
+7: int main() {
+8: int n;
+9:
+10: printf("Digite o valor de N: ");
+11: scanf("%d", &n);
+12:
+13: if (n < 0) {
+14: printf("O valor de N deve ser um número natural (não negativo).\n");
+15: return 1;
+16: }
+17:
+18: printf("A soma dos primeiros %d números naturais é %d.\n", n, somaNaturais(n));
+19:
+20: return 0;
+21: }
