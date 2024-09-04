@@ -1,0 +1,16 @@
+Atividade-5
+1: #include <stdio.h>
+2: #include <math.h>
+3:
+4: int main() {
+5: float raio, area;
+6:
+7: printf("Digite o raio do círculo: ");
+8: scanf("%f", &raio);
+9:
+10: area = M_PI * raio * raio;
+11:
+12: printf("A área do círculo com raio %.2f é %.2f.\n", raio, area);
+13:
+14: return 0;
+15: }
