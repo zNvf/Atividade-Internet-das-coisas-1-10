@@ -1,0 +1,28 @@
+Atividade 18
+1: #include <stdio.h>
+2:
+3: int mdc(int a, int b) {
+4: while (b != 0) {
+5: int temp = b;
+6: b = a % b;
+7: a = temp;
+8: }
+9: return a;
+10: }
+11:
+12: int mmc(int a, int b) {
+13: return (a * b) / mdc(a, b);
+14: }
+15:
+16: int main() {
+17: int a, b;
+18:
+19: printf("Digite o primeiro número: ");
+20: scanf("%d", &a);
+21: printf("Digite o segundo número: ");
+22: scanf("%d", &b);
+23:
+24: printf("O MMC de %d e %d é %d.\n", a, b, mmc(a, b));
+25:
+26: return 0;
+27: }
