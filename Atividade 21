@@ -1,0 +1,35 @@
+//Atividade 21
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+		int main() {
+				setlocale(LC_ALL, "Portuguese");
+			
+			int numero, quantidade, i, chave, encontrado = -1;
+			
+			printf("Qual a quantidade do vetor: ");
+			scanf("%d", &quantidade);	
+			
+			printf("\n");
+			
+			printf("Digite os números do vetor: ");
+			int vetor[quantidade];
+			for (i = 0; i < quantidade; i++){
+				scanf("%i", &vetor[i]);
+				
+			}
+			
+			printf("\n Qual número deseja encotrar: ");
+			scanf("%d", &chave);
+			for (i = 0; i < quantidade; i++){
+			if (vetor[i] == chave) {
+			encontrado = i;
+		}	}
+			
+			if (encontrado != -1)
+				printf("\nO vetor possui esse número");
+			else 
+				printf("\nO vetor não possui esse número");
+			
+			return 0;}
