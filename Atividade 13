@@ -1,0 +1,33 @@
+//Atividade 13
+1: #include <stdio.h>
+2:
+3: void fibonacci(int n) {
+4:
+5: int a = 0, b = 1, temp;
+6:
+7: if (n <= 0) {
+8: printf("O número de termos deve ser positivo.\n");
+9: return;
+10: }
+11:
+12: printf("Sequência de Fibonacci:\n");
+13:
+14: for (int i = 0; i < n; i++) {
+15: printf("%d ", a);
+16: temp = a;
+17: a = b;
+18: b = temp + b;
+19: }
+20: printf("\n");
+21: }
+22:
+23: int main() {
+24: int n;
+25:
+26: printf("Digite o número de termos da sequência de Fibonacci: ");
+27: scanf("%d", &n);
+28:
+29: fibonacci(n);
+30:
+31: return 0;
+32: }
