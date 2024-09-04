@@ -1,0 +1,11 @@
+Atividade-10
+1: #include <stdio.h>
+2:
+3: int main() {
+4: int contador, numero = 10;
+5: printf("A contagem regressiva: ");
+6: for (contador = 0; contador < numero; numero = numero - 1) {
+7: printf("%d ", numero);
+8: }
+9: return 0;
+10: }
