@@ -1,0 +1,16 @@
+Atividade-8
+1: #include <stdio.h>
+2:
+3: int main() {
+4: int numero;
+5:
+6: printf("Digite um número para exibir a tabuada: ");
+7: scanf("%d", &numero);
+8:
+9: printf("Tabuada do número %d:\n", numero);
+10: for (int i = 1; i <= 10; i++) {
+11: printf("%d x %d = %d\n", numero, i, numero * i);
+12: }
+13:
+14: return 0;
+15: }
