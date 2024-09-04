@@ -1,0 +1,46 @@
+Atividade 20
+1: #include <stdio.h>
+2:
+3: void selectionSort(int arr[], int n) {
+4: int i, j, min_idx, temp;
+5:
+6: for (i = 0; i < n - 1; i++) {
+7:
+8: min_idx = i;
+9: for (j = i + 1; j < n; j++) {
+10: if (arr[j] < arr[min_idx]) {
+11: min_idx = j;
+12: }
+13: }
+14:
+15: if (min_idx != i) {
+16: temp = arr[i];
+17: arr[i] = arr[min_idx];
+18: arr[min_idx] = temp;
+19: }
+20: }
+21: }
+22:
+23: int main() {
+24: int n;
+25:
+26: printf("Digite o número de elementos no vetor: ");
+27: scanf("%d", &n);
+28:
+29: int arr[n];
+30:
+31: printf("Digite os %d elementos do vetor:\n", n);
+32: for (int i = 0; i < n; i++) {
+33: scanf("%d", &arr[i]);
+34: }
+35:
+36: selectionSort(arr, n);
+37:
+38: printf("Vetor ordenado em ordem crescente:\n");
+39: for (int i = 0; i < n; i++) {
+40: printf("%d ", arr[i]);
+41: }
+42: printf("\n");
+43:
+44: return 0;
+45: }
