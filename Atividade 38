@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+#include<string.h>
+#include<locale.h>
+#define MAX 100
+
+int verificarPrecedencia(char operador){
+switch(operador){
+case '+':
+case '-':
+return 1;
+case '*':
+case '/':
+return 2;
+case '^':
+return 3;
+default:
+return 0;
+}
+}
+
+void converterInfixaParaPosfixa(const char* expressaoInfixa,char* expressaoPosfixa){
+char pilhaOperadores[MAX];
+int topo=-1;
+int indicePosfixa=0;
+
+for(int i=0;expressaoInfixa[i]!='\0';i++){
+char caractereAtual=expressaoInfixa[i];
+
+if(isspace(caractereAtual)){
+continue;
+}
+
+if(isalnum(caractereAtual)){
+expressaoPosfixa[indicePosfixa++]=caractereAtual;
+}else if(caractereAtual=='('){
+pilhaOperadores[++topo]=caractereAtual;
+}else if(caractereAtual==')'){
+while(topo>=0&&pilhaOperadores[topo]!='('){
+expressaoPosfixa[indicePosfixa++]=pilhaOperadores[topo--];
+}
+topo--;
+}else{
+while(topo>=0&&verificarPrecedencia(pilhaOperadores[topo])>=verificarPrecedencia(caractereAtual)){
+expressaoPosfixa[indicePosfixa++]=pilhaOperadores[topo--];
+}
+pilhaOperadores[++topo]=caractereAtual;
+}
+}
+
+while(topo>=0){
+expressaoPosfixa[indicePosfixa++]=pilhaOperadores[topo--];
+}
+
+expressaoPosfixa[indicePosfixa]='\0';
+}
+
+int main(){
+setlocale(LC_ALL,"Portuguese");
+char expressaoInfixa[MAX];
+char expressaoPosfixa[MAX];
+
+printf("Digite a expressão infixa:");
+fgets(expressaoInfixa,MAX,stdin);
+
+expressaoInfixa[strcspn(expressaoInfixa,"\n")]='\0';
+
+converterInfixaParaPosfixa(expressaoInfixa,expressaoPosfixa);
+
+printf("Expressão pós-fixa:%s\n",expressaoPosfixa);
+
+return 0;
+}
