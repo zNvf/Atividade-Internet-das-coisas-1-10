@@ -1,0 +1,45 @@
+//Atividade 16
+1: #include <stdio.h>
+2: #include <string.h>
+3: #include <ctype.h>
+4: #include <stdbool.h>
+5:
+6: bool isPalindromo(char str[]) {
+7: int inicio = 0;
+8: int fim = strlen(str) - 1;
+9:
+10: while (inicio < fim) {
+11:
+12: while (inicio < fim && !isalnum(str[inicio])) inicio++;
+13: while (inicio < fim && !isalnum(str[fim])) fim--;
+14:
+15: if (tolower(str[inicio]) != tolower(str[fim])) {
+16: return false;
+17: }
+18:
+19: inicio++;
+20: fim--;
+21: }
+22:
+23: return true;
+24: }
+25:
+26: int main() {
+27: char str[100];
+28:
+29: printf("Digite uma palavra ou frase: ");
+30: fgets(str, sizeof(str), stdin);
+31:
+32: size_t len = strlen(str);
+33: if (len > 0 && str[len - 1] == '\n') {
+34: str[len - 1] = '\0';
+35: }
+36:
+37: if (isPalindromo(str)) {
+38: printf("\"%s\" é um palíndromo.\n", str);
+39: } else {
+40: printf("\"%s\" não é um palíndromo.\n", str);
+41: }
+42:
+43: return 0;
+44: }
