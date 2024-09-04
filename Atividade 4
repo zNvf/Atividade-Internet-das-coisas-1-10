@@ -1,0 +1,22 @@
+Atividade-4
+1: #include <stdio.h>
+2:
+3: int main() {
+4: int num1, num2;
+5:
+6: printf("Digite o primeiro número: ");
+7: scanf("%d", &num1);
+8:
+9: printf("Digite o segundo número: ");
+10: scanf("%d", &num2);
+11:
+12: if (num1 > num2) {
+13: printf("O maior número é %d.\n", num1);
+14: } else if (num2 > num1) {
+15: printf("O maior número é %d.\n", num2);
+16: } else {
+17: printf("Os dois números são iguais.\n");
+18: }
+19:
+20: return 0;
+21: }
