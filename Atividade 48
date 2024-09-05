@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+
+int main(){
+setlocale(LC_ALL, "Portuguese");
+int i, j=0, numero, temp;
+printf("Qual andar você quer ir: ");
+scanf("%d", &numero);
+for (i=0; i < 100; i++){
+if (numero != 0){
+printf("Saindo do andar %d indo pro andar %d ", j, numero );
+printf("\nQual andar deseja ir: \n");
+j = numero;
+scanf("%d", &numero );
+}
+else {
+printf("Chegou ao térreo");
+break;}
+}
+return 0;
+}
