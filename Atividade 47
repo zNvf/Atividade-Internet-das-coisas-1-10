@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#define MAX_EDGES 100
+
+typedef struct {
+int u, v, weight;
+} Edge;
+
+typedef struct {
+Edge edges[MAX_EDGES];
+int numEdges;
+} Graph;
+
+typedef struct {
+int parent;
+int rank;
+} DisjointSet;
+
+void initializeDisjointSet(DisjointSet sets[], int n) {
+for (int i = 0; i < n; i++) {
+sets[i].parent = i;
+sets[i].rank = 0;
+}
+}
+
+int find(DisjointSet sets[], int i) {
+if (sets[i].parent != i)
+sets[i].parent = find(sets, sets[i].parent);
+return sets[i].parent;
+}
+
+void unionSets(DisjointSet sets[], int root1, int root2) {
+if (sets[root1].rank > sets[root2].rank)
+sets[root2].parent = root1;
+else if (sets[root1].rank < sets[root2].rank)
+sets[root1].parent = root2;
+else {
+sets[root2].parent = root1;
+sets[root1].rank++;
+}
+}
+
+int compareEdges(const void *a, const void *b) {
+return ((Edge *)a)->weight - ((Edge *)b)->weight;
+}
+
+void kruskal(Graph *graph, int n) {
+setlocale(LC_ALL, "Portuguese");
+DisjointSet *sets = (DisjointSet *)malloc(n * sizeof(DisjointSet));
+initializeDisjointSet(sets, n);
+
+qsort(graph->edges, graph->numEdges, sizeof(Edge), compareEdges);
+
+int mstWeight = 0;
+printf("Arestas na Árvore Geradora Mínima:\n");
+
+for (int i = 0; i < graph->numEdges; i++) {
+int u = find(sets, graph->edges[i].u);
+int v = find(sets, graph->edges[i].v);
+
+if (u != v) {
+printf("%d - %d: %d\n", graph->edges[i].u, graph->edges[i].v, graph->edges[i].weight);
+unionSets(sets, u, v);
+mstWeight += graph->edges[i].weight;
+}
+}
+
+printf("Peso total da Árvore Geradora Mínima: %d\n", mstWeight);
+
+free(sets);
+}
+
+int main() {
+setlocale(LC_ALL, "Portuguese");
+
+Graph graph;
+int n, m;
+
+printf("Digite o número de vértices: ");
+scanf("%d", &n);
+
+printf("Digite o número de arestas: ");
+scanf("%d", &m);
+
+graph.numEdges = m;
+
+printf("Digite as arestas (u, v, peso):\n");
+for (int i = 0; i < m; i++) {
+scanf("%d %d %d", &graph.edges[i].u, &graph.edges[i].v, &graph.edges[i].weight);
+}
+
+kruskal(&graph, n);
+
+return 0;
+}
