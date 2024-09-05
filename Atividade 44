@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdbool.h>
+#define N 8
+
+int moveX[] = {2, 1, -1, -2, -2, -1, 1, 2};
+int moveY[] = {1, 2, 2, 1, -1, -2, -2, -1};
+
+void printBoard(int board[N][N]) {
+for (int i = 0; i < N; i++) {
+for (int j = 0; j < N; j++) {
+printf("%2d ", board[i][j]);
+}
+printf("\n");
+}
+}
+
+bool isSafe(int x, int y, int board[N][N]) {
+return (x >= 0 && x < N && y >= 0 && y < N && board[x][y] == -1);
+}
+
+bool solveKTUtil(int x, int y, int movei, int board[N][N]) {
+if (movei == N * N) {
+return true;
+}
+
+for (int k = 0; k < 8; k++) {
+int newX = x + moveX[k];
+int newY = y + moveY[k];
+if (isSafe(newX, newY, board)) {
+board[newX][newY] = movei;
+if (solveKTUtil(newX, newY, movei + 1, board)) {
+return true;
+}
+board[newX][newY] = -1;
+}
+}
+return false;
+}
+
+bool solveKT() {
+int board[N][N];
+for (int i = 0; i < N; i++) {
+for (int j = 0; j < N; j++) {
+board[i][j] = -1;
+}
+}
+
+int startX = 0;
+int startY = 0;
+board[startX][startY] = 0;
+
+if (solveKTUtil(startX, startY, 1, board)) {
+printBoard(board);
+return true;
+} else {
+printf("Não há solução.\n");
+return false;
+}
+}
+
+int main() {
+solveKT();
+return 0;
+}
